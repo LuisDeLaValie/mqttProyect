@@ -5,15 +5,20 @@ class ServerMQTT:
     mqtt_host = "mqtt.thingsboard.cloud"
     mqtt_username = "NzL2dxqmi3OJ3IQUmaZg"  # Your Adafruit IO username
 
-    def __init__(self,):
+    def __init__(self):
         self.mqtt_client = MQTTClient( 
+            client_id="06d2c110-0bdc-11ee-af14-175a6432e834",
             server = self.mqtt_host,
-            user = self.mqtt_username 
+            user = "NzL2dxqmi3OJ3IQUmaZg",
+            password = "",
+            port = 1883
         )
         self.mqtt_client.connect()
 
     def publicar(self,topic,data):
-        self.mqtt_client.publish(topic,str(data))
+        msg = str(data)
+        print(f"data:{msg}")
+        self.mqtt_client.publish(topic,msg)
 
     def disconect(self):
         self.mqtt_client.disconnect()
