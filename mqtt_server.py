@@ -2,14 +2,12 @@
 from lib.umqtt.simple import MQTTClient
 
 class ServerMQTT:
-    mqtt_host = "mqtt.thingsboard.cloud"
-    mqtt_username = "NzL2dxqmi3OJ3IQUmaZg"  # Your Adafruit IO username
 
     def __init__(self):
         self.mqtt_client = MQTTClient( 
-            client_id="06d2c110-0bdc-11ee-af14-175a6432e834",
-            server = self.mqtt_host,
-            user = "NzL2dxqmi3OJ3IQUmaZg",
+            client_id="b85ad470-0ef9-11ee-b46c-d528757047e3",
+            server = "mqtt.thingsboard.cloud",
+            user = "43hDdUt1v13Q4y2EQ4Ly",
             password = "",
             port = 1883
         )
@@ -22,6 +20,13 @@ class ServerMQTT:
 
     def disconect(self):
         self.mqtt_client.disconnect()
+
+    def subscribe(self,topic):
+        self.mqtt_client.subscribe(topic)
+    
+    def listen(self,callback):
+        self.mqtt_client.set_callback(callback)
+
 
 
 """ 
@@ -39,4 +44,4 @@ mqtt_client = MQTTClient(
 
 mqtt_client.connect()
 
-#  mqtt pub -t 'v1/devices/me/telemetry' -h 'mqtt.thingsboard.cloud' -p '1883' -u 'hjUTU84ehdAOfvhzXsNJ' -m {"temperature":25} """
+#  mqtt pub -t 'v1/devices/me/telemetry' -h 'mqtt.thingsboard.cloud' -p '1883' -u 'hjUTU84ehdAOfvhzXsNJ' -m {"temperature":25} """ 
