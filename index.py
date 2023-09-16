@@ -25,7 +25,7 @@ try:
     while True:
         temp = random.randint(20, 100)
         data = {
-            "temperature": temp
+            "temp": temp
         }
 
         """data = {
